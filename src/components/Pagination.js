@@ -12,7 +12,7 @@ function Pagination({ totalposts, postPerPage, pageToDisplay }) {
     <div className="pagination justify-content-end mt-4 mb-5">
       {pageList.map((page) => (
         <div className="page-item" key={page}>
-          <a href="#" className="page-link" onClick={() => pageToDisplay(page)}>
+          <a className="page-link" onClick={() => pageToDisplay(page)}>
             {page}
           </a>
         </div>

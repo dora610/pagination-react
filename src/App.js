@@ -7,21 +7,16 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [postPerPage, setPostPerPage] = useState(5);
   const [displayPage, setDisplayPage] = useState(1);
-  // const [pageToDisplay, setPageToDisplay] = useState([]);
 
   const url = "https://jsonplaceholder.typicode.com/posts";
 
   let maxPostIndex = postPerPage * displayPage;
   let minPostIndex = maxPostIndex - postPerPage;
 
-  // console.log(postlist);
-  // setPostDisplay(postlist.slice(minPostIndex, maxPostIndex));
-
   useEffect(() => {
     const fetchpost = async () => {
       try {
         setIsLoading(true);
-        // {data: d}=axios
         const { data } = await axios.get(url);
         setPostlist(data);
         setIsLoading(false);
@@ -57,6 +52,12 @@ function App() {
             value="15"
             className="btn btn-outline-primary"
             onClick={() => setPostPerPage(15)}
+          />
+          <input
+            type="button"
+            value="20"
+            className="btn btn-outline-primary"
+            onClick={() => setPostPerPage(20)}
           />
         </div>
       </div>
