@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Pagination from "./components/Pagination";
+import Postlimit from "./components/Postlimit";
 
 function App() {
   const [postlist, setPostlist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [postPerPage, setPostPerPage] = useState(5);
+  const [postPerPage, setPostPerPage] = useState(6);
   const [displayPage, setDisplayPage] = useState(1);
 
   const url = "https://jsonplaceholder.typicode.com/posts";
@@ -32,35 +33,7 @@ function App() {
     <div className="container mt-auto">Loading...</div>
   ) : (
     <div className="container">
-      <div className="justify-content-evenly my-3">
-        <span>Select post per page:</span>
-        <div className="btn-group">
-          <input
-            type="button"
-            value="5"
-            className="btn btn-outline-primary"
-            onClick={() => setPostPerPage(5)}
-          />
-          <input
-            type="button"
-            value="10"
-            className="btn btn-outline-primary"
-            onClick={() => setPostPerPage(10)}
-          />
-          <input
-            type="button"
-            value="15"
-            className="btn btn-outline-primary"
-            onClick={() => setPostPerPage(15)}
-          />
-          <input
-            type="button"
-            value="20"
-            className="btn btn-outline-primary"
-            onClick={() => setPostPerPage(20)}
-          />
-        </div>
-      </div>
+      <Postlimit postLimiter={(p) => setPostPerPage(p)} />
       <h3>Posts: </h3>
       <div className="row row-cols-1 row-cols-md-3 g-4 border border-info my-2 pb-4">
         {postlist.slice(minPostIndex, maxPostIndex).map((post) => (
